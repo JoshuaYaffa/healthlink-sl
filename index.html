@@ -32,97 +32,7 @@ if ('serviceWorker' in navigator) {
         .catch(err => console.log('❌ Service Worker error:', err));
 }
 </script>
-    <!-- DARK MODE FIX - Place this right before </body> -->
-<script>
-(function() {
-    // Find the dark mode button
-    const darkModeBtn = document.querySelector('.dark-mode-toggle');
-    
-    if (!darkModeBtn) {
-        console.log('Dark mode button not found');
-        return;
-    }
-    
-    // Function to apply theme
-    function setTheme(theme) {
-        if (theme === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            darkModeBtn.innerHTML = '☀️';
-            localStorage.setItem('darkMode', 'enabled');
-        } else {
-            document.documentElement.removeAttribute('data-theme');
-            darkModeBtn.innerHTML = '🌙';
-            localStorage.setItem('darkMode', 'disabled');
-        }
-    }
-    
-    // Check saved preference
-    const savedMode = localStorage.getItem('darkMode');
-    if (savedMode === 'enabled') {
-        setTheme('dark');
-    } else {
-        setTheme('light');
-    }
-    
-    // Add click event
-    darkModeBtn.onclick = function(e) {
-        e.preventDefault();
-        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-        if (isDark) {
-            setTheme('light');
-        } else {
-            setTheme('dark');
-        }
-    };
-    
-    // Also add CSS for dark mode if not already in stylesheet
-    const style = document.createElement('style');
-    style.textContent = `
-        [data-theme="dark"] {
-            --primary: #4CAF50;
-            --primary-dark: #2E7D32;
-            --text: #F5F5F5;
-            --text-light: #CCCCCC;
-            --bg-light: #1a1a2e;
-            --bg-white: #16213e;
-            --shadow: 0 4px 6px rgba(0,0,0,0.3);
-        }
-        
-        [data-theme="dark"] body {
-            background-color: var(--bg-light);
-            color: var(--text);
-        }
-        
-        [data-theme="dark"] .navbar,
-        [data-theme="dark"] .footer,
-        [data-theme="dark"] .service-card,
-        [data-theme="dark"] .clinic-card,
-        [data-theme="dark"] .modal-content,
-        [data-theme="dark"] .testimonial-card,
-        [data-theme="dark"] .contact-card,
-        [data-theme="dark"] .info-card,
-        [data-theme="dark"] .faq-item,
-        [data-theme="dark"] .accordion-item {
-            background-color: var(--bg-white) !important;
-            color: var(--text) !important;
-        }
-        
-        [data-theme="dark"] input,
-        [data-theme="dark"] select,
-        [data-theme="dark"] textarea {
-            background-color: #0f0f1a;
-            color: white;
-            border-color: #333;
-        }
-        
-        [data-theme="dark"] .btn-outline {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-    `;
-    document.head.appendChild(style);
-})();
-</script>
+  
 <body>
 
 <!-- Navigation Bar -->
@@ -359,4 +269,95 @@ if ('serviceWorker' in navigator) {
     }
 </script>
 </body>
+    <!-- DARK MODE FIX - Place this right before </body> -->
+<script>
+(function() {
+    // Find the dark mode button
+    const darkModeBtn = document.querySelector('.dark-mode-toggle');
+    
+    if (!darkModeBtn) {
+        console.log('Dark mode button not found');
+        return;
+    }
+    
+    // Function to apply theme
+    function setTheme(theme) {
+        if (theme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            darkModeBtn.innerHTML = '☀️';
+            localStorage.setItem('darkMode', 'enabled');
+        } else {
+            document.documentElement.removeAttribute('data-theme');
+            darkModeBtn.innerHTML = '🌙';
+            localStorage.setItem('darkMode', 'disabled');
+        }
+    }
+    
+    // Check saved preference
+    const savedMode = localStorage.getItem('darkMode');
+    if (savedMode === 'enabled') {
+        setTheme('dark');
+    } else {
+        setTheme('light');
+    }
+    
+    // Add click event
+    darkModeBtn.onclick = function(e) {
+        e.preventDefault();
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        if (isDark) {
+            setTheme('light');
+        } else {
+            setTheme('dark');
+        }
+    };
+    
+    // Also add CSS for dark mode if not already in stylesheet
+    const style = document.createElement('style');
+    style.textContent = `
+        [data-theme="dark"] {
+            --primary: #4CAF50;
+            --primary-dark: #2E7D32;
+            --text: #F5F5F5;
+            --text-light: #CCCCCC;
+            --bg-light: #1a1a2e;
+            --bg-white: #16213e;
+            --shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        
+        [data-theme="dark"] body {
+            background-color: var(--bg-light);
+            color: var(--text);
+        }
+        
+        [data-theme="dark"] .navbar,
+        [data-theme="dark"] .footer,
+        [data-theme="dark"] .service-card,
+        [data-theme="dark"] .clinic-card,
+        [data-theme="dark"] .modal-content,
+        [data-theme="dark"] .testimonial-card,
+        [data-theme="dark"] .contact-card,
+        [data-theme="dark"] .info-card,
+        [data-theme="dark"] .faq-item,
+        [data-theme="dark"] .accordion-item {
+            background-color: var(--bg-white) !important;
+            color: var(--text) !important;
+        }
+        
+        [data-theme="dark"] input,
+        [data-theme="dark"] select,
+        [data-theme="dark"] textarea {
+            background-color: #0f0f1a;
+            color: white;
+            border-color: #333;
+        }
+        
+        [data-theme="dark"] .btn-outline {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+    `;
+    document.head.appendChild(style);
+})();
+</script>
 </html>
